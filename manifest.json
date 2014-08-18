@@ -1,1 +1,25 @@
-BoSung Kim
+{
+  "manifest_version": 2,
+  "name":    "14 OSS Skeleton",
+  "version": "1.0",
+  "description": "Get the input field value from the web",
+  
+  "background": {
+    "scripts": ["background.js"]
+  },
+  
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": ["myscript.js"],
+      "run_at": "document_start"
+    }
+  ],
+  
+  "permissions": [
+    "<all_urls>",
+    "tabs"
+  ]
+}
