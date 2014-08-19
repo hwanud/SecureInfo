@@ -3,7 +3,7 @@ document.addEventListener("submit", function(e) {
   
   alert(uId.value);
   
-  chrome.runtime.sendMessage({greeting: "hello"}, function(response) {
-    console.log(reponse.farewell);
+  chrome.runtime.sendMessage({type: "username", msg: uId.value}, function(response) {
+    alert("Communication is done!");
   });
 });
