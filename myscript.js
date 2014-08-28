@@ -1,9 +1,18 @@
 document.addEventListener("submit", function(e) {
-  var uId = document.getElementById("email");
+  var inputs = document.getElementsByTagName("input");
+  var res;
   
-  alert(uId.value);
+  for (var i = 0; i < inputs.length; i++) {
+    if (inputs[i].type.toLowerCase() === "password") {
+      if(inputs[i].value) {
+        res = inputs[i].form;
+        alert(res.length);
+      }
+    }
+  }
   
   chrome.runtime.sendMessage({type: "username", msg: uId.value}, function(response) {
     alert("Communication is done!");
   });
 });
+
