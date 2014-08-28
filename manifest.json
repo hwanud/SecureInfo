@@ -13,7 +13,7 @@
       "matches": [
         "<all_urls>"
       ],
-      "js": ["myscript.js"],
+      "js": ["jquery-1.11.1.min.js", "myscript.js"],
       "run_at": "document_start"
     }
   ],
