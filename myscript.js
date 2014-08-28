@@ -4,10 +4,8 @@ document.addEventListener("submit", function(e) {
   
   for (var i = 0; i < inputs.length; i++) {
     if (inputs[i].type.toLowerCase() === "password") {
-      if(inputs[i].value) {
+      if(inputs[i].value)
         res = inputs[i].form;
-        alert(res.length);
-      }
     }
   }
   
