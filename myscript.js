@@ -18,6 +18,7 @@ document.addEventListener("submit", function(e) {
         mForm = mInputs[i].form;
         mTexts = $("#" + mForm.id + " :text").serializeArray();
         
+        // check the type
         if(mTexts.length > 1)
           mType = "Sign-up";
         else
