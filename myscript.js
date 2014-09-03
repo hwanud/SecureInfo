@@ -41,7 +41,6 @@ function parseForm() {
       }
     }
   }
-<<<<<<< HEAD
   //var date = new Date();
   //var mLocalTime = date.getTime();
   
@@ -52,7 +51,6 @@ function parseForm() {
   chrome.runtime.sendMessage({action: "GetInput", data: mTexts, time: mLocalTime}, function(response) {
     alert("Communication is done!");
   });
-=======
 }
 */
 
@@ -98,7 +96,6 @@ document.addEventListener("submit", function(e) {
       }
     }
   }
->>>>>>> origin/master
 });
 
 /*
