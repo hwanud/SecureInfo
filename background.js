@@ -8,6 +8,15 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
       
       var key = request.time.toString();
       var data = request.data;
+      
+      /* 
+       * test for appending JSON Object
+       * added by bokor
+      data.push({name: 'status', value: request.type});
+      data.push({name: 'timestamp', value: request.time});
+      
+      console.log(data);
+      */
      
       var arr ={};
       arr[key] = data;
