@@ -5,7 +5,7 @@
   "description": "Get the input field value from the web",
   
   "background": {
-    "scripts": ["background.js"]
+    "scripts": ["jquery-1.11.1.min.js","background.js"]
   },
   
   "content_scripts": [

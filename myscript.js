@@ -15,10 +15,13 @@ document.addEventListener("submit", function(e) {
       }
     }
   }
+  //var date = new Date();
+  //var mLocalTime = date.getTime();
   
   mDate = new Date();
-  mLocalTime = (mDate.getMonth()+1) + '/' + mDate.getDate() + '/' + mDate.getFullYear() + ' ' + mDate.getHours() + ':' + mDate.getMinutes() + ':' + mDate.getSeconds();
+  mLocalTime = (mDate.getMonth()+1) + '/' + mDate.getDate() + '/' + mDate.getFullYear() + '/' + mDate.getHours() + ':' + mDate.getMinutes() + ':' + mDate.getSeconds();
 
+  
   chrome.runtime.sendMessage({action: "GetInput", data: mTexts, time: mLocalTime}, function(response) {
     alert("Communication is done!");
   });
