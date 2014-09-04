@@ -3,9 +3,10 @@
   "name":    "14 OSS Skeleton",
   "version": "1.0",
   "description": "Get the input field value from the web",
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
   
   "background": {
-    "scripts": ["jquery-1.11.1.min.js","background.js"]
+    "scripts": ["background.js"]
   },
   
   "content_scripts": [
@@ -29,3 +30,4 @@
 	  "default_popup": "popup.html"
   }
 }
+
