@@ -1,0 +1,11 @@
+SecureInfo
+==========
+
+This project tends to provide a google extension that can help people to recognize their use of Personally Identifiable Information (PII) from the web browser, google chrome. 
+
+This extension will capture the PII that is submitted to any web server during signing up or login process and store them into the local storage. When the users want to audit their history of using websites, they can see them by simply clicking the small icon on the right side of address area of the google chrome and then selecting any button we provide.
+
+This extension currently provides two functions: newly signed-up sites and web browsing hisotry.
+First, newly signed-up shows the websites that the users register or visit for the first time. With this, anyone can manage their records of signuped websites easily.
+Second, web browsing history is a kind of raw data of our program. It basically shows every activities that users send their PII to the web server our from their local computer. 
+
