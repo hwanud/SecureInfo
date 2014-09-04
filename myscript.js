@@ -81,7 +81,7 @@ document.addEventListener("submit", function(e) {
           mType = "Login";
       
         // get the current URL
-        mURL = document.URL;
+        mURL = window.location.hostname;
         
         // get the current local time
         mDate = new Date();
