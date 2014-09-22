@@ -1,12 +1,28 @@
-var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
+var randomScalingFactor = function() { 
+	return Math.round(Math.random()*100)
+	};
 var testKey;
 
-  chrome.storage.sync.get(null, function(obj) {
-          var allkeys = Object.keys(obj);
-          testKey = allkeys[0].toString();
-          alert(testKey);
-  });
-        
+/*
+ * This function will get all the data from sync server.
+ * Provided with the callback function as a parameter,
+ * it will process the chart afterall.
+ */
+function getValue(callback) { 
+	chrome.storage.sync.get(null, callback);
+}
+
+/*
+ * Callback for chrome.storage.sync.get() function. 
+ * This will be passed to the sync.get() function.
+ * This callback will get all the data from sync server,
+ * and then put it to the chart.
+ * Chart will be displayed after the page is loaded.
+ */
+function processChart(obj) {
+	var allkeys = Object.keys(obj);
+	testKey = allkeys[0].toString();
+
 	var barChartData = {
 	  
 		labels : [testKey,"February","March","April","May","June","July"],
@@ -26,13 +42,21 @@ var testKey;
 				data : [28, 48, 40, 19, 86, 27, 90]
 			}
 		]
+	};
 
-	}
-	window.onload = function(){
-		var ctx = document.getElementById("canvas").getContext("2d");
-		window.myBar = new Chart(ctx).Bar(barChartData, {
+	window.onload = showBarChart(barChartData);
+}
+
+/*
+ * This function process chart.
+ */
+function showBarChart(barData) {
+	var ctx = document.getElementById("canvas").getContext("2d");
+	window.myBar = new Chart(ctx).Bar(barData, {
 			responsive : true
 		});
-	}
+}
 
-  
+/* Initiate chart processing */
+getValue(processChart);
+
