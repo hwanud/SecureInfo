@@ -59,4 +59,3 @@ function showBarChart(barData) {
 
 /* Initiate chart processing */
 getValue(processChart);
-
