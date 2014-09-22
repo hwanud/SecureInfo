@@ -1,7 +1,15 @@
 var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
+var testKey;
 
+  chrome.storage.sync.get(null, function(obj) {
+          var allkeys = Object.keys(obj);
+          testKey = allkeys[0].toString();
+          alert(testKey);
+  });
+        
 	var barChartData = {
-		labels : ["January","February","March","April","May","June","July"],
+	  
+		labels : [testKey,"February","March","April","May","June","July"],
 		datasets : [
 			{
 				fillColor : "rgba(220,220,220,0.5)",
@@ -27,3 +35,4 @@ var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
 		});
 	}
 
+  
