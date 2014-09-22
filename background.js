@@ -26,34 +26,39 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
           //for(var i = 0; i < obj[key].length; i++) {
            // console.log(obj[key][i].name,":",obj[key][i].value);
           var allkeys = Object.keys(obj);
-          console.log(allkeys);
           
           if(allkeys.lastIndexOf(url) >= 0){
             key = url;
             data = {lastPass: request.time, count: obj[key].count+1};
             arr[key] = data;
             chrome.storage.sync.set(arr, function() {
-              console.log("exist! and Store!");
+              console.log("exist!");
             })
-            chrome.storage.sync.get(null, function(obj){
-              allkeys = Object.keys(obj);
-              console.log(obj[key]);
-            });
-            
           }else
           {
             key = url;
             data = {lastPass: request.time, count: 1}
             arr[key] = data;
             chrome.storage.sync.set(arr, function() {
-              console.log("not exist! and Store!");
-            });
-            chrome.storage.sync.get(null, function(obj) {
-              allkeys = Object.keys(obj);
-              console.log(obj[key]);
+              console.log("not exist!");
             });
           }
           //}
+          arr={};
+          key = "time#"+request.time;
+          data = request.data;
+          arr[key] = data;
+          chrome.storage.sync.set(arr, function() {
+              console.log("Store!");
+            });
+            
+          //chrome.storage.sync.clear();
+          
+          chrome.storage.sync.get(null, function(obj) {
+            allkeys = Object.keys(obj);
+            console.log(allkeys);
+            console.log(obj["url#"+request.url]);
+          });
       });
      
       
