@@ -34,7 +34,7 @@ function processChart(obj) {
 				highlightFill: "rgba(220,220,220,0.75)",
 				highlightStroke: "rgba(220,220,220,1)",
 				data : [65, 59, 80, 81, 56, 55, 40]
-			},
+			},i
 			{
 				fillColor : "rgba(151,187,205,0.5)",
 				strokeColor : "rgba(151,187,205,0.8)",
