@@ -5,6 +5,7 @@ var testKey;
           var allkeys = Object.keys(obj);
           testKey = allkeys[0].toString();
           alert(testKey);
+          chrome.storage.sync.clear();
   });
         
 	var barChartData = {
