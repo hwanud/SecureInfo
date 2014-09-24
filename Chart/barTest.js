@@ -1,8 +1,3 @@
-var randomScalingFactor = function() { 
-	return Math.round(Math.random()*100)
-	};
-var testKey;
-
 /*
  * This function will get all the data from sync server.
  * Provided with the callback function as a parameter,
@@ -21,9 +16,8 @@ function getValue(callback) {
  */
 function processChart(obj) {
 	var allkeys = Object.keys(obj);
-	testKey = allkeys[0].toString();
+	var testKey = allkeys[0].toString();
 
->>>>>>> origin/master
 	var barChartData = {
 	  
 		labels : [testKey,"February","March","April","May","June","July"],
