@@ -17,19 +17,19 @@ function getValue(callback) {
 function initTbl(obj) {
   var allkeys = Object.keys(obj);
   
-  var table = document.getElementById("t01");
+  var table = document.getElementById("access_history_list");
   
   // one row
   var row = table.insertRow(1);
   
-  var cell1 = row.insertCell(0);
-  var cell2 = row.insertCell(1);
-  var cell3 = row.insertCell(2);
-  var cell4 = row.insertCell(3);
+  var cell_time = row.insertCell(0);
+  var cell_site = row.insertCell(1);
+  var cell_information = row.insertCell(2);
+  var cell_btn = row.insertCell(3);
   
-  cell1.innerHTML = "NEW CELL1";
-  cell2.innerHTML = "NEW CELL2";
-  cell3.innerHTML = "NEW CELL3";
+  cell_time.innerHTML = "NEW CELL1";
+  cell_site.innerHTML = "NEW CELL2";
+  cell_information.innerHTML = "NEW CELL3";
   
   var btn = document.createElement('input');
   btn.type = 'button';
@@ -37,8 +37,8 @@ function initTbl(obj) {
   btn.value = 'Delete';
   btn.onclick = deleteRow;
   
-  cell4.style.textAlign = "center";
-  cell4.appendChild(btn);
+  cell_btn.style.textAlign = "center";
+  cell_btn.appendChild(btn);
 }
 
 /*
@@ -48,7 +48,7 @@ function initTbl(obj) {
  */
 function deleteRow() {
   var index = this.parentNode.parentNode.rowIndex;
-  var table = document.getElementById("t01");
+  var table = document.getElementById("access_history_list");
   table.deleteRow(index);
 }
 
