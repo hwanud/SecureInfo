@@ -1,5 +1,24 @@
 <html>
 	<head>
+		<style>
+		  table {
+		    width: 100%;
+		  }
+		  th, td {
+		    padding: 5px;
+		    text-align: left;
+		  }
+		  table#t01 tr:nth-child(even) {
+		    background-color: #eee;
+		  }
+		  table#t01 tr:nth-child(odd) {
+		    background-color: #fff;
+		  }
+		  table#t01 th {
+		    background-color: black;
+		    color: white;
+		  }
+		</style>
 		<title>History</title>
 		<script src="Chart/Chart.js"></script>
 	</head>
@@ -10,5 +29,19 @@
 			<canvas id="canvas" height="400" width="600"></canvas>
 		</div>
 	<script src="Chart/bar_stats.js"></script>
-	</body>
+	<table id="t01">
+		  <th>Time Stamp</th>
+		  <th>Site</th>
+		  <th>Used Information</th>
+      <tr>
+        <td>Jill</td>
+        <td>Smith</td> 
+        <td>50</td>
+      </tr>
+      <tr>
+        <td>Eve</td>
+        <td>Jackson</td> 
+        <td>94</td>
+      </tr>
+  </table>
 </html>
