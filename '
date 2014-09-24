@@ -1,13 +1,4 @@
 /*
- * Overload the Array prototype here.
- * last keyword will return the last element in 
- * the array.
- */
-Array.prototype.last = function() {
-	    return this[this.length-1];
-}
-
-/*
  * This function will get all the data from sync server.
  * Provided with the callback function as a parameter,
  * it will process the chart afterall.
@@ -16,14 +7,6 @@ function getValue(callback) {
 	chrome.storage.sync.get(null, callback);
 }
 
-
-/*
- * NOT USED - 2014.09.24.
- * This function counts the number of monthly access activity.
- * This is a starting function for counting.
- * Not completed yet and still requires development.
- * DO NOT USED this for now. 
- */
 function countUsedInfoMonth(allObj, targetYear) {
 	var count = 0;
 	var index = 0;
@@ -46,7 +29,6 @@ function countUsedInfoMonth(allObj, targetYear) {
 }
 
 /*
- * NOT USED - 2014.09.24.
  * allObj contains all data objects from google sync server.
  * type should specify either "time" or "url".
  * This function will return data object set that is filtered
@@ -72,13 +54,6 @@ function getFilteredData(allObj, type) {
 	return filtered;
 }
 
-/*
- * NOT USED - 2014.09.24.
- * This functin counts the number of monthly access to 
- * a certain website.
- * This is not completed yet. It is still developing 
- * and NOT USED for now.
- */
 function getMonthlyCounts(objs, timeData) {
 	var visit = new Array();
 
@@ -123,46 +98,65 @@ function processChart(obj) {
 
 	var urlData = getFilteredData(obj, "url");
 
-	// Construct data for bar chart from here.
-	var barDataSet = new Object();
-	barDataSet.labels = new Array();
-	barDataSet.datasets = new Array();
-
-	// use random function to select bar color.
-	var randColor = Math.floor(Math.random() * 256);
-
-	// tmpData will contain data and schema for bar graph.
-	var tmpData = new Object();
-	tmpData.fillColor = "rgba(" + randColor + "," + randColor + "," + randColor + "," + "0.5)";
-	tmpData.strokeColor = "rgba(" + randColor + "," + randColor + "," + randColor + "," + "0.8)";
-	tmpData.highlightFill = "rgba(" + randColor + "," + randColor + "," + randColor + "," + "0.75)";
-	tmpData.highlightStroke = "rgba(" + randColor + "," + randColor + "," + randColor + "," + "1)";
-	tmpData.data = new Array();
-
-	// This loop constructs the object which contains labels 
-	// and count value for web access.
+	var barDataSet = Array();
 	for (var i = 0; i < urlData.length; i++) {
-		var retrievedUrl = urlData[i].split('#')[1];
-		barDataSet.labels.push(retrievedUrl);
+		var randColor = Math.floor(Math.random() * 256);
+		var tmpData = new Object();
 		
-		var key = urlData[i];	// this has "url#" keyword with actual url.
-		var len = obj[key].length;
-		var totalVisitCount = obj[key][len-1].value;	// the last index has count value. 
+		tmpData.fillColor = "rgba(" + randColor + "," + randColor + "," + randColor + "," + "0.5)";
+		tmpData.strokeColor = "rgba(220,220,220,0.8)";
+		tmpData.highlightFill = "rgba(220,220,220,0.75)";
+		tmpData.highlightStroke = "rgba(220,220,220,1)";
+		//tmpData.data = ;
 
-		// push data continuously because we construct bar graph for each website.
-		tmpData.data.push(totalVisitCount);	
 	}
 
-	// Final stage to construct bar graph data. 
-	barDataSet.datasets.push(tmpData);
+	var foo = new Object();
+	foo.fillColor = "rgba(220,220,220,0.5)";
+	foo.strokeColor = "rgba(220,220,220,0.8)";
+	foo.highlightFill = "rgba(220,220,220,0.75)";
+	foo.highlightStroke = "rgba(220,220,220,1)";
+	foo.data = new Array(12);
+	for (var i = 0; i < 12; i++) {
+		foo.data[i] = 12;
+	}
 
-	// Show bar graph on page loading.
-	window.onload = showBarChart(barDataSet);
+	var testDataSet1 = 
+		{
+			fillColor : "rgba(220,220,220,0.5)",
+			strokeColor : "rgba(220,220,220,0.8)",
+			highlightFill: "rgba(220,220,220,0.75)",
+			highlightStroke: "rgba(220,220,220,1)",
+			data : [65, 59, 80, 81, 56, 55, 40]
+		};
+
+	var barChartData = {
+		labels : ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
+		datasets : [
+			foo,
+			testDataSet1, 
+			{
+				fillColor : "rgba(220,220,220,0.5)",
+				strokeColor : "rgba(220,220,220,0.8)",
+				highlightFill: "rgba(220,220,220,0.75)",
+				highlightStroke: "rgba(220,220,220,1)",
+				data : [65, 59, 80, 81, 56, 55, 40]
+			},
+			{
+				fillColor : "rgba(151,187,205,0.5)",
+				strokeColor : "rgba(151,187,205,0.8)",
+				highlightFill : "rgba(151,187,205,0.75)",
+				highlightStroke : "rgba(151,187,205,1)",
+				data : [28, 48, 40, 19, 86, 27, 90]
+			}
+		]
+	};
+
+	window.onload = showBarChart(barChartData);
 }
 
 /*
- * This function process chart and prepare to show 
- * afterward with window.onload.
+ * This function process chart.
  */
 function showBarChart(barData) {
 	var ctx = document.getElementById("canvas").getContext("2d");
@@ -173,4 +167,3 @@ function showBarChart(barData) {
 
 /* Initiate chart processing */
 getValue(processChart);
-
