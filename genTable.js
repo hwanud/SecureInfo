@@ -7,6 +7,41 @@ function getValue(callback) {
 	chrome.storage.sync.get(null, callback);
 }
 
+function getHistory(obj) {
+  var allkeys = Object.keys(obj);
+	var count = 0;
+	var timelist = [];
+	//var allkeys = Object.keys(allObj);
+
+	// Sort data according to the month and year first.
+	// Then we need to sort them again according to site name.
+	for (var itemKey in obj) {
+		// parsedStr[0] -> time#month
+		// parsedStr[1] -> day
+		// parsedStr[2] -> year + ' ' + data
+
+		//alert(allObj[itemKey][1].hostName);
+		var tokenedData = itemKey.split("#");
+		if (tokenedData[0] == "time") {
+			/*
+			parsedStr = tokenedData.split('/');	
+			month = parsedStr[0];
+			year = parsedStr[2].split(' ')[0];
+
+			// filtering data according to year.
+			if (year == targetYear) {
+				var sortedData = allObj[itemKey];
+			}
+			*/
+			timelist.push(obj);
+		}
+	}
+  
+  return timelist;
+	// count data using site name now.
+}
+
+
 /*
  * Callback for chrome.storage.sync.get() function. 
  * This will be passed to the sync.get() function.
@@ -15,7 +50,8 @@ function getValue(callback) {
  * Table will be displayed after the page is loaded.
  */
 function initTbl(obj) {
-  var allkeys = Object.keys(obj);
+  var res = getHistory(obj);
+  alert(res[0][0].name);
   
   var table = document.getElementById("access_history_list");
   
