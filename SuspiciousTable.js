@@ -74,9 +74,9 @@ function initTbl(obj) {
       cell_access_num.innerHTML = count;
       
       if(count > 10)
-        cell_status.innerHTML = "warnnig";
+        cell_status.innerHTML = "Warnig";
       else if(count > 5)
-        cell_status.innerHTML = "suspicious";
+        cell_status.innerHTML = "Suspicious";
       
     }
   }
