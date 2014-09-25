@@ -43,6 +43,10 @@ function getFilteredData(allObj, type) {
  */
 function initTbl(obj) {
   var keyList = getFilteredData(obj, "url");
+  var d = new Date();
+  //var day = (d.getMonth()+1)+"/"+d.getDate()+"/"+d.getFullYear();
+  var day = "9/25/2014";
+  var timeList = getFilteredData(obj, "time");
   
   var table = document.getElementById("suspicious_list");
   
@@ -56,19 +60,25 @@ function initTbl(obj) {
     //obj[keyList[0]][0].name  
     var url = keyList[i].split('#');
     var objLen = obj[keyList[i]].length;
-    if()
-    cell_site.innerHTML = url[1];
+    var count = 0;
     
-    for(var j = 0; j < objLen - 1; j++) {
-      cell_information.innerHTML += obj[keyList[i]][j].value + ", ";
-      if(j == objLen - 2)
-        cell_information.innerHTML += obj[keyList[i]][j].value;
+    for(var k =0; k<timeList.length ; k++){
+        var timeToken = timeList[k].split('#');
+        var storedDay = timeToken[1].split(" ");
+        if(url[1] == obj[timeList[k]][obj[timeList[k]].length-2].value
+          && day == storedDay[0])
+          count++;
     }
-    
-    /*
-    cell_num_access = obj[keyList[i]][objLen-1].value;
-    cell_lateset = obj[keyList[i]][objLen].value;
-    */
+    if(count > 5){
+      cell_site.innerHTML = url[1];
+      cell_access_num.innerHTML = count;
+      
+      if(count > 10)
+        cell_status.innerHTML = "warnnig";
+      else if(count > 5)
+        cell_status.innerHTML = "suspicious";
+      
+    }
   }
 }
 
