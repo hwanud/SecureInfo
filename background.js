@@ -29,7 +29,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
           
           if(allkeys.lastIndexOf(url) >= 0){
             key = url;
-            data = request.data;
+            data = request.data.slice(0);
             //data = {lastPass: request.time, count: obj[key].count+1};
             data.push({name: 'lastPass', value: request.time},
                       {name: 'count', value: obj[key][obj[key].length-1].value+1});
@@ -44,7 +44,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
           {
             key = url;
             //data = {lastPass: request.time, count: 1}
-            data = request.data;
+            data = request.data.slice(0);
             data.push({name: 'lastPass', value: request.time},
                       {name: 'count', value:1});
             arr[key] = data;
@@ -55,7 +55,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
           //}
           arr={};
           key = "time#"+request.time;
-          data = request.data;
+          data = request.data.slice(0);
           data.push({name: 'hostName', value: request.url},
                     {name: 'status', value: request.type});
           arr[key] = data;
