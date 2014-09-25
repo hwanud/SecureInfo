@@ -1,10 +1,46 @@
 <html>
 	<head>
-		<title>Newly Signed-ups</title>
+		<style>
+		  table {
+		    width: 100%;
+		  }
+		  th, td {
+		    padding: 5px;
+		    text-align: left;
+		  }
+		  table#signed_ups_list tr:nth-child(even) {
+		    background-color: #eee;
+		  }
+		  table#signed_ups_list tr:nth-child(odd) {
+		    background-color: #fff;
+		  }
+		  table#signed_ups_list th {
+		    background-color: #666;
+		    color: white;
+		  }
+		</style>
+		<title>Signed-ups</title>
 		<script src="Chart/Chart.js"></script>
 	</head>
 	<body>
-		<h2>Newly Singed-ups</h2>
+		<h2>Singed-ups</h2>
 		This page shows the websites you have signed up so far. The list is made by filtering duplicates out from the used personally identifiable information such as id, password, or email address.<br>
-	</body>
+		<div style="width: 100%">
+			<canvas id="canvas" height="50"></canvas>
+		</div>
+		<script src="Chart/bar_stats.js"></script>
+		<p>
+		<br>
+		<p>
+		<table id="signed_ups_list">
+  		  <th width="20%">Site</th>
+  		  <th width="33%">Used Information</th>
+  		  <th width="10%">Accesses</th>
+  		  <th width="30%">Latest Access</th>
+  		  <th width="7%"></th>
+		</table>
+		<script src="SignedTable.js"></script>
+
+  	</body>
 </html>
+
