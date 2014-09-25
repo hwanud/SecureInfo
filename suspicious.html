@@ -1,9 +1,40 @@
 <html>
 	<head>
-		<title>Suspicious sites</title>
+		<style>
+		  table {
+		    width: 100%;
+		  }
+		  th, td {
+		    padding: 5px;
+		    text-align: left;
+		  }
+		  table#suspicious_list tr:nth-child(even) {
+		    background-color: #eee;
+		  }
+		  table#suspicious_list tr:nth-child(odd) {
+		    background-color: #fff;
+		  }
+		  table#suspicious_list th {
+		    background-color: #666;
+		    color: white;
+		  }
+		</style>
+		<title>Signed-ups</title>
 	</head>
 	<body>
-		<h2>Suspicious sites</h2>
-		This page shows the suspicious activities pertaining to your information leakage. Note that it might not correct. You may need to check out more carefully on the personally identifiable information shown there.<br>
-	</body>
+		<h2>Singed-ups</h2>
+		This page shows the websites you have signed up so far. The list is made by filtering duplicates out from the used personally identifiable information such as id, password, or email address.<br>
+		<p>
+		<br>
+		<p>
+		<table id="suspicious_list">
+  		  <th width="30%">Site</th>
+  		  <th width="20%">Access count per Day</th>
+  		  <th width="13%">Status</th>
+  		  <th width="7%"></th>
+		</table>
+		<script src="SuspiciousTable.js"></script>
+
+  	</body>
 </html>
+
