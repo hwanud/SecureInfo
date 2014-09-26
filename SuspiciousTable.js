@@ -51,9 +51,16 @@ function getFilteredData(allObj, type) {
  * Author: BoSung Kim
  */
 function initTbl(obj) {
+  
   var keyList = getFilteredData(obj, "url");
-  var d = new Date();
-  //var day = (d.getMonth()+1)+"/"+d.getDate()+"/"+d.getFullYear();
+  
+  // set current date to HTML
+  var mDate = new Date();
+  mLocalTime = (mDate.getMonth()+1) + '/' + mDate.getDate() + '/' + mDate.getFullYear();
+  var mTime = document.getElementById("local_time");
+  mTime.innerHTML = mLocalTime;
+  
+  
   var day = "9/25/2014";
   var timeList = getFilteredData(obj, "time");
   

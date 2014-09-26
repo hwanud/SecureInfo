@@ -69,16 +69,15 @@ function initTbl(obj) {
     
     cell_site.innerHTML = url[1];
     
-    for(var j = 0; j < objLen - 1; j++) {
-      cell_information.innerHTML += obj[keyList[i]][j].value + ", ";
-      if(j == objLen - 2)
+    for(var j = 0; j < objLen - 2; j++) {
+      if(j == objLen - 3)
         cell_information.innerHTML += obj[keyList[i]][j].value;
+      else
+        cell_information.innerHTML += obj[keyList[i]][j].value + ", ";
     }
     
-    /*
-    cell_num_access = obj[keyList[i]][objLen-1].value;
-    cell_lateset = obj[keyList[i]][objLen].value;
-    */
+    cell_num_access.innerHTML = obj[keyList[i]][objLen-1].value;
+    cell_lateset.innerHTML = obj[keyList[i]][objLen-2].value;
     
     var btn = document.createElement('input');
     btn.type = 'button';
@@ -109,6 +108,7 @@ function deleteRow() {
   });
   
   table.deleteRow(index);
+  location.reload();
 }
 
 /* Initiate table processing */

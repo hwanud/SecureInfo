@@ -75,9 +75,10 @@ function initTbl(obj) {
     cell_site.innerHTML = obj[keyList[i]][objLen-2].value;
     
     for(var j = 0; j < objLen - 2; j++) {
-      cell_information.innerHTML += obj[keyList[i]][j].value + ", ";
       if(j == objLen - 3)
         cell_information.innerHTML += obj[keyList[i]][j].value;
+      else
+        cell_information.innerHTML += obj[keyList[i]][j].value + ", ";
     }
     
     var btn = document.createElement('input');
@@ -109,6 +110,7 @@ function deleteRow() {
   });
   
   table.deleteRow(index);
+  location.reload();
 }
 
 /* Initiate table processing */

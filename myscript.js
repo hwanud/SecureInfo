@@ -19,7 +19,7 @@ document.addEventListener("submit", function(e) {
         mForm = mInputs[i].form;
         mTexts = $("#" + mForm.id + " :text").serializeArray();
         
-        // check the type
+        // check the tyep
         if(mTexts.length > 1)
           mType = "Sign-up";
         else
@@ -41,3 +41,4 @@ document.addEventListener("submit", function(e) {
     }
   }
 });
+
