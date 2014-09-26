@@ -1,18 +1,24 @@
 /*
+ * Function name: getValue
+ * Description:
  * This function will get all the data from sync server.
  * Provided with the callback function as a parameter,
  * it will process the table afterall.
+ * Author: InHwan Kim
  */
 function getValue(callback) { 
 	chrome.storage.sync.get(null, callback);
 }
 
 /*
- * NOT USED - 2014.09.24.
+ * Function name: getFilteredData
+ * Description:
  * allObj contains all data objects from google sync server.
  * type should specify either "time" or "url".
  * This function will return data object set that is filtered
  * by 'type'.
+ * Return: the list of key names
+ * Author: InHwan Kim
  */
 function getFilteredData(allObj, type) {
 	var filtered = new Array();
@@ -35,17 +41,33 @@ function getFilteredData(allObj, type) {
 }
 
 /*
+ * Function name: initTbl
+ * Description: 
  * Callback for chrome.storage.sync.get() function. 
  * This will be passed to the sync.get() function.
  * This callback will get all the data from sync server,
  * and then put it to the table.
  * Table will be displayed after the page is loaded.
+ * Author: BoSung Kim
  */
 function initTbl(obj) {
+  
   var keyList = getFilteredData(obj, "url");
-  var d = new Date();
-  var day = (d.getMonth()+1)+"/"+d.getDate()+"/"+d.getFullYear();
+
+  //var d = new Date();
+  //var day = (d.getMonth()+1)+"/"+d.getDate()+"/"+d.getFullYear();
+  
+
+  
+  // set current date to HTML
+  var mDate = new Date();
+  mLocalTime = (mDate.getMonth()+1) + '/' + mDate.getDate() + '/' + mDate.getFullYear();
+  var mTime = document.getElementById("local_time");
+  mTime.innerHTML = mLocalTime;
+  
+  
   //var day = "9/25/2014";
+
   var timeList = getFilteredData(obj, "time");
   
   var table = document.getElementById("suspicious_list");
@@ -66,7 +88,7 @@ function initTbl(obj) {
         var timeToken = timeList[k].split('#');
         var storedDay = timeToken[1].split(" ");
         if(url[1] == obj[timeList[k]][obj[timeList[k]].length-2].value
-          && day == storedDay[0])
+          && mLocalTime == storedDay[0])
           count++;
     }
     if(count > 5){
@@ -82,4 +104,5 @@ function initTbl(obj) {
   }
 }
 
+/* Initiate table processing */
 getValue(initTbl)

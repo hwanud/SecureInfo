@@ -15,7 +15,7 @@
         "<all_urls>"
       ],
       "js": ["jquery-1.11.1.min.js", "myscript.js"],
-      "run_at": "document_start"
+      "run_at": "document_end"
     }
   ],
   
