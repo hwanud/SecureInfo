@@ -66,10 +66,10 @@ function initTbl(obj) {
         cell_information.innerHTML += obj[keyList[i]][j].value;
     }
     
-    /*
+    
     cell_num_access = obj[keyList[i]][objLen-1].value;
     cell_lateset = obj[keyList[i]][objLen].value;
-    */
+    
     
     var btn = document.createElement('input');
     btn.type = 'button';

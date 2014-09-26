@@ -69,7 +69,26 @@ function initTbl(obj) {
     btn.type = 'button';
     btn.id = 'btn';
     btn.value = 'Delete';
-    btn.onclick = deleteRow;
+    btn.onclick = function(){
+      var index = this.parentNode.parentNode.rowIndex;
+      var table = document.getElementById("access_history_list");
+      var delKey = "time#" + table.rows[index].cells[0].innerHTML;
+      var urlKey = "url#"+obj[delKey][obj[delKey].length-2].value;  
+      obj[urlKey][obj[urlKey].length -1].value--;
+      var arr = {};
+      arr[urlKey] = obj[urlKey];
+      
+      chrome.storage.sync.set(arr, function(){
+        alert("set");
+        });
+      chrome.storage.sync.remove(delKey, function(){
+      
+        alert("remove");
+      });
+  
+      table.deleteRow(index);
+      
+    };
     
     cell_btn.style.textAlign = "center";
     cell_btn.appendChild(btn);
@@ -81,15 +100,6 @@ function initTbl(obj) {
  * When the button of each row is clicked,
  * this function will delete the row from the table.
  */
-function deleteRow() {
-  var index = this.parentNode.parentNode.rowIndex;
-  var table = document.getElementById("access_history_list");
-  var delKey = "time#" + table.rows[index].cells[0].innerHTML;
-  
-  chrome.storage.sync.remove(delKey, function(){
-  });
-  
-  table.deleteRow(index);
-}
+
 
 getValue(initTbl);

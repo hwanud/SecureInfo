@@ -44,8 +44,8 @@ function getFilteredData(allObj, type) {
 function initTbl(obj) {
   var keyList = getFilteredData(obj, "url");
   var d = new Date();
-  //var day = (d.getMonth()+1)+"/"+d.getDate()+"/"+d.getFullYear();
-  var day = "9/25/2014";
+  var day = (d.getMonth()+1)+"/"+d.getDate()+"/"+d.getFullYear();
+  //var day = "9/25/2014";
   var timeList = getFilteredData(obj, "time");
   
   var table = document.getElementById("suspicious_list");
