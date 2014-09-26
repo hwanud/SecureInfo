@@ -1,18 +1,24 @@
 /*
+ * Function name: getValue
+ * Description:
  * This function will get all the data from sync server.
  * Provided with the callback function as a parameter,
  * it will process the table afterall.
+ * Author: InHwan Kim
  */
 function getValue(callback) { 
 	chrome.storage.sync.get(null, callback);
 }
 
 /*
- * NOT USED - 2014.09.24.
+ * Function name: getFilteredData
+ * Description:
  * allObj contains all data objects from google sync server.
  * type should specify either "time" or "url".
  * This function will return data object set that is filtered
  * by 'type'.
+ * Return: the list of key names
+ * Author: InHwan Kim
  */
 function getFilteredData(allObj, type) {
 	var filtered = new Array();
@@ -35,11 +41,14 @@ function getFilteredData(allObj, type) {
 }
 
 /*
+ * Function name: initTbl
+ * Description: 
  * Callback for chrome.storage.sync.get() function. 
  * This will be passed to the sync.get() function.
  * This callback will get all the data from sync server,
  * and then put it to the table.
  * Table will be displayed after the page is loaded.
+ * Author: BoSung Kim
  */
 function initTbl(obj) {
   var keyList = getFilteredData(obj, "url");
@@ -83,9 +92,13 @@ function initTbl(obj) {
 }
 
 /*
+ * Function name: deleteRow
+ * Description:
  * Each row has a button.
  * When the button of each row is clicked,
- * this function will delete the row from the table.
+ * this function will delete the row from the table
+ * and delete the data from the sync server by the key
+ * Author: BoSung Kim
  */
 function deleteRow() {
   var index = this.parentNode.parentNode.rowIndex;
@@ -98,4 +111,5 @@ function deleteRow() {
   table.deleteRow(index);
 }
 
+/* Initiate table processing */
 getValue(initTbl);
