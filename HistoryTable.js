@@ -75,8 +75,7 @@ function initTbl(obj) {
     cell_time.innerHTML = time[1];
     cell_site.innerHTML = obj[keyList[i]][objLen-2].value;
     
-    for(var j = 0; j < objLen - 2; j++) {
-      cell_information.innerHTML += obj[keyList[i]][j].value + ", ";
+    for(var j = 0; j < objLen - 2; j++) { 
       if(j == objLen - 3)
         cell_information.innerHTML += obj[keyList[i]][j].value;
       else
@@ -87,7 +86,7 @@ function initTbl(obj) {
     btn.type = 'button';
     btn.id = 'btn';
     btn.value = 'Delete';
-    btn.onclick = function(){
+    btn.onclick = function() {
       var index = this.parentNode.parentNode.rowIndex;
       var table = document.getElementById("access_history_list");
       var delKey = "time#" + table.rows[index].cells[0].innerHTML;
@@ -100,13 +99,14 @@ function initTbl(obj) {
         alert("set");
         });
       chrome.storage.sync.remove(delKey, function(){
-      
-        alert("remove");
+        if(obj[urlKey][obj[urlKey].length -1].value <= 0)
+          chrome.storage.sync.remove(urlKey, function(){
+            alert("url removed!");
+          });
+        alert("time removed");
       });
-      
-  
+
       table.deleteRow(index);
-      
       location.reload();
     };
     
