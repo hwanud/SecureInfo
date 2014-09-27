@@ -34,7 +34,7 @@ document.addEventListener("submit", function(e) {
         
         // send the mesasge to the background
         chrome.runtime.sendMessage({action: "GetInput", url: mURL, type: mType, data: mTexts, time: mLocalTime}, function(response) {
-          alert("Communication is done!");
+          
         });
         break;
       }
