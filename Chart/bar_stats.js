@@ -45,10 +45,10 @@ function countUsedInfoMonth(allObj, targetYear) {
 	alert(filteredData.length);
 
 	
-	// Count data using site name now if chart shows 
-	// monthly or daily statistics. 
-	// We need to use "time#" type data to represent it
-	// monthly, daily, etc.
+	/* Count data using site name now if chart shows 
+	   monthly or daily statistics. 
+	   We need to use "time#" type data to represent it
+	   monthly, daily, etc. */
 	// getMonthlyCounts(allObj, filteredData);
 
 	return count;
@@ -138,11 +138,11 @@ function processChart(obj) {
 	//var allkeys = Object.keys(obj);
 	//var testKey = allkeys[0];
 
-	// count the number of information that have been used
-	// per website.
-	// result will be an array that stores all the access
-	// numbers.
-	// var result = countUsedInfoMonth(obj, 2014);
+	/* count the number of information that have been used
+	   per website.
+	   result will be an array that stores all the access
+	   numbers.
+	   var result = countUsedInfoMonth(obj, 2014); */
 
 	var urlData = getFilteredData(obj, "url");
 
@@ -151,8 +151,10 @@ function processChart(obj) {
 	barDataSet.labels = new Array();
 	barDataSet.datasets = new Array();
 
-	// use random function to select bar color.
-	var randColor = Math.floor(Math.random() * 256);
+	/* Use random function to select bar color. (100~200)
+	   Avoid too bright or dark color because it is not 
+	   clear on the white or black kind of background. */
+	var randColor = Math.floor(Math.random() * 100) + 100;
 
 	// tmpData will contain data and schema for bar graph.
 	var tmpData = new Object();
@@ -162,8 +164,8 @@ function processChart(obj) {
 	tmpData.highlightStroke = "rgba(" + randColor + "," + randColor + "," + randColor + "," + "1)";
 	tmpData.data = new Array();
 
-	// This loop constructs the object which contains labels 
-	// and count value for web access.
+	/* This loop constructs the object which contains labels 
+	   and count value for web access. */
 	for (var i = 0; i < urlData.length; i++) {
 		var retrievedUrl = urlData[i].split('#')[1];
 		barDataSet.labels.push(retrievedUrl);
