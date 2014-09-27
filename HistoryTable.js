@@ -100,14 +100,14 @@ function initTbl(obj) {
       arr[urlKey] = obj[urlKey];
       
       chrome.storage.sync.set(arr, function(){
-        alert("set");
-        });
+        
+      });
       chrome.storage.sync.remove(delKey, function(){
         if(obj[urlKey][obj[urlKey].length -1].value <= 0)
           chrome.storage.sync.remove(urlKey, function(){
-            alert("url removed!");
+            
           });
-        alert("time removed");
+        
       });
 
       table.deleteRow(index);

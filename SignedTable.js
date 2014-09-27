@@ -118,27 +118,5 @@ function initTbl(obj) {
     cell_btn.appendChild(btn);
   }
 }
-
-/*
- * Function name: deleteRow
- * Description:
- * Each row has a button.
- * When the button of each row is clicked,
- * this function will delete the row from the table
- * and delete the data from the sync server by the key
- * Author: BoSung Kim
- 
-function deleteRow() {
-  var index = this.parentNode.parentNode.rowIndex;
-  var table = document.getElementById("signed_ups_list");
-  var delKey = "url#" + table.rows[index].cells[0].innerHTML;
-  
-  chrome.storage.sync.remove(delKey, function(){
-  });
-  
-  table.deleteRow(index);
-  location.reload();
-}
-*/
 /* Initiate table processing */
 getValue(initTbl);
