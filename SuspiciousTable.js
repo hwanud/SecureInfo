@@ -79,7 +79,10 @@ function initTbl(obj) {
     var cell_status = row.insertCell(2);
     var cell_lateset = row.insertCell(3);
   
-    //obj[keyList[0]][0].name  
+/*
+ * Description:
+ * Author: Duhee Ye
+ */
     var url = keyList[i].split('#');
     var objLen = obj[keyList[i]].length;
     var count = 0;

@@ -89,7 +89,35 @@ function initTbl(obj) {
     btn.type = 'button';
     btn.id = 'btn';
     btn.value = 'Delete';
-    btn.onclick = deleteRow;
+/* Function name: deleteRow
+ * Description:
+ * Each row has a button.
+ * When the button of each row is clicked,
+ * this function will delete the row from the table
+ * and delete the data from the sync server by the key
+ * and time data which has same url are deleted by this function.
+ * then results are reflected in history page.
+ * Author: BoSung Kim, Duhee Ye
+ */
+    btn.onclick = function() {
+      
+      var index = this.parentNode.parentNode.rowIndex;
+      var table = document.getElementById("signed_ups_list");
+      var delKey = "url#" + table.rows[index].cells[0].innerHTML;
+      var timeList = getFilteredData(obj, "time");
+      for(var j = 0; j < timeList.length; j++){
+        if(obj[timeList[j]][obj[timeList[j]].length-2].value == table.rows[index].cells[0].innerHTML){
+          chrome.storage.sync.remove(timeList[j], function(){
+            
+          });
+        }
+      }
+      chrome.storage.sync.remove(delKey, function(){
+      });
+      
+      table.deleteRow(index);
+      location.reload();
+    };
     
     cell_btn.style.textAlign = "center";
     cell_btn.appendChild(btn);
@@ -104,7 +132,7 @@ function initTbl(obj) {
  * this function will delete the row from the table
  * and delete the data from the sync server by the key
  * Author: BoSung Kim
- */
+ 
 function deleteRow() {
   var index = this.parentNode.parentNode.rowIndex;
   var table = document.getElementById("signed_ups_list");
@@ -116,6 +144,6 @@ function deleteRow() {
   table.deleteRow(index);
   location.reload();
 }
-
+*/
 /* Initiate table processing */
 getValue(initTbl);

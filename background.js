@@ -19,9 +19,12 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
       console.log(data);
       */
      
+     
+/*
+ * Description: 
+ * Author: Duhee Ye
+ */
       var arr ={};
-      //arr[key] = data;
-      //chrome.storage.sync.clear();
       chrome.storage.sync.get(null, function(obj) {
           //for(var i = 0; i < obj[key].length; i++) {
            // console.log(obj[key][i].name,":",obj[key][i].value);
