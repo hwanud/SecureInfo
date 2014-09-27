@@ -23,6 +23,6 @@ btn2.onclick = function() {
   var data = [{name: 'suspicious', value: suspicious },{name: 'warning', value: warning }];
   arr[key] = data;
   chrome.storage.sync.set(arr, function(){
-    
+    alert("Set the Threshold!");
   });
 }
