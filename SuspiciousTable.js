@@ -91,13 +91,26 @@ function initTbl(obj) {
           && mLocalTime == storedDay[0])
           count++;
     }
-    if(count > 5){
+    
+    var setting = getFilteredData(obj, "setting");
+    var suspicious;
+    var warning;
+    
+    if(setting.length == 0){
+      suspicious = 10;
+      warning = 20;
+    }else{
+      suspicious = obj[setting[0]][0].value;
+      warning = obj[setting[0]][1].value;
+    }
+    
+    if(count > suspicious){
       cell_site.innerHTML = url[1];
       cell_access_num.innerHTML = count;
       
-      if(count > 10)
+      if(count > warning)
         cell_status.innerHTML = "Warnig";
-      else if(count > 5)
+      else if(count > suspicious)
         cell_status.innerHTML = "Suspicious";
       
     }
