@@ -91,8 +91,9 @@ function initTbl(obj) {
     btn.value = 'Delete';
     
     /* 
-       dfasdf
-       Author: Duhee Ye
+     * remove the that URL_key value data.
+     * and time_key value data are also removed that has same URL.
+     * Author: Duhee Ye
      */
     btn.onclick = function() {
       

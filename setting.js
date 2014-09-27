@@ -1,5 +1,7 @@
 /*
- * Description: 
+ * If click the 'clear', all of data are removed.
+ * User set the threshold value and click the 'done',
+ * then set the threshold that based on showing the suspicious site.
  * Author: Duhee Ye
  */
 var btn = document.getElementById('clear');

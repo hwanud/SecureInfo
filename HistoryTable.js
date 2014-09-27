@@ -87,7 +87,9 @@ function initTbl(obj) {
     btn.id = 'btn';
     btn.value = 'Delete';
     /* 
-     * dfasdfas
+     * If log_data is deleted at history page.
+     * The data that has time_key is removed in the google sync,
+     * and that data's host_name count value is decreased
      * Author: Duhee Ye
      */
     btn.onclick = function() {
