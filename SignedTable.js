@@ -48,7 +48,7 @@ function getFilteredData(allObj, type) {
  * This callback will get all the data from sync server,
  * and then put it to the table.
  * Table will be displayed after the page is loaded.
- * Author: BoSung Kim
+ * Author: BoSung Kim, Duhee Ye
  */
 function initTbl(obj) {
   var keyList = getFilteredData(obj, "url");
@@ -89,16 +89,11 @@ function initTbl(obj) {
     btn.type = 'button';
     btn.id = 'btn';
     btn.value = 'Delete';
-/* Function name: deleteRow
- * Description:
- * Each row has a button.
- * When the button of each row is clicked,
- * this function will delete the row from the table
- * and delete the data from the sync server by the key
- * and time data which has same url are deleted by this function.
- * then results are reflected in history page.
- * Author: BoSung Kim, Duhee Ye
- */
+    
+    /* 
+       dfasdf
+       Author: Duhee Ye
+     */
     btn.onclick = function() {
       
       var index = this.parentNode.parentNode.rowIndex;

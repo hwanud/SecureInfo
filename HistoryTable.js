@@ -86,6 +86,10 @@ function initTbl(obj) {
     btn.type = 'button';
     btn.id = 'btn';
     btn.value = 'Delete';
+    /* 
+     * dfasdfas
+     * Author: Duhee Ye
+     */
     btn.onclick = function() {
       var index = this.parentNode.parentNode.rowIndex;
       var table = document.getElementById("access_history_list");
