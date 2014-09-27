@@ -13,7 +13,7 @@ btn.onclick = function() {
 var btn2 = document.getElementById('threshold');
 
 btn2.onclick = function() {
-  alert("btn2");
+  //alert("btn2");
   var suspicious = document.getElementById('suspicious').value;
   var warning = document.getElementById('warning').value;
   var arr = {}
