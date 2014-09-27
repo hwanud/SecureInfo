@@ -2,6 +2,7 @@ SecureInfo
 ==========
 
 ### DESCRIPTION
+
 This project tends to provide a google extension that can help 
 people to recognize their use of Personally Identifiable 
 Information (PII) from the web browser, google chrome. 
@@ -33,6 +34,7 @@ and using this application might slow your web browser currently.
 
 
 ### INSTALLATION
+
 Currently, this software is not registed on the google play or any 
 website. Users who are interested in this software need to install 
 it under the developer mode. 
@@ -51,6 +53,7 @@ chrome extensions, it is done.
 
 
 ### Usage
+
 Just browse any website as you desire. This application will record 
 the use of your personal information such as id, password, address, 
 and phone number with timestamp. 
@@ -61,6 +64,7 @@ service.
 
 
 ### CONTACT
+
 Please visit our github repository and check the current status of 
 development if interested.
 If you have any questions or comments to improve our software, please 
