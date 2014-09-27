@@ -63,7 +63,7 @@ function initTbl(obj) {
   var mDate = new Date();
   mLocalTime = (mDate.getMonth()+1) + '/' + mDate.getDate() + '/' + mDate.getFullYear();
   var mTime = document.getElementById("local_time");
-  mTime.innerHTML = mLocalTime;
+  mTime.innerHTML = "Today: " + mLocalTime;
   
   
   //var day = "9/25/2014";
