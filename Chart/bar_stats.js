@@ -194,10 +194,29 @@ function processChart(obj) {
  * Author: ihkim
  */
 function showBarChart(barData) {
-	var ctx = document.getElementById("canvas").getContext("2d");
-	window.myBar = new Chart(ctx).Bar(barData, {
-			responsive : true
-		});
+	var chartArea = document.getElementById("chart_area");
+
+	/* If chart area does not have anything to display, it will 
+	   show a text "There is no data to display." instead of
+	   leaving the place empty. */
+	if (barData.labels.length == 0) {	// in case of not having any data
+		// We assume there is also no dataset array if label has nothing.
+		chartArea.style.padding = "90px";
+		chartArea.style.border = "1px solid #969696";
+		chartArea.style.display = "block";
+		chartArea.style.borderCollapse = "collapse";
+		chartArea.style.borderSpacing = "0";
+		chartArea.style.fontSize = "20px";
+		chartArea.style.color = "#736F6E";
+		chartArea.style.textAlign = "center";
+		chartArea.textContent = "There is no data to display.";
+	}
+	else {	// in case of having chart data
+		var ctx = document.getElementById("canvas").getContext("2d");
+		window.myBar = new Chart(ctx).Bar(barData, {
+				responsive : true
+			});
+	}
 }
 
 /* Initiate chart processing */
