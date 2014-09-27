@@ -28,7 +28,7 @@
   "browser_action": {
 	  "default_title": "SecureInfo",
 	  "default_icon": "s_icon.png",
-	  "default_popup": "popup.html"
+	  "default_popup": "popup.html" 
   }
 }
 
