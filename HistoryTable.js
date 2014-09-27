@@ -115,16 +115,5 @@ function initTbl(obj) {
   }
 }
 
-/*
- * Function name: deleteRow
- * Description:
- * Each row has a button.
- * When the button of each row is clicked,
- * this function will delete the row from the table.
- * and delete the data from the sync server by the key
- * Author: BoSung Kim
- */
-
-
 /* Initiate table processing */
 getValue(initTbl);
