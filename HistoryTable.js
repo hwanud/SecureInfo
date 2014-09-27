@@ -87,7 +87,9 @@ function initTbl(obj) {
     btn.id = 'btn';
     btn.value = 'Delete';
     /* 
-     * dfasdfas
+     * If log_data is deleted at history page.
+     * The data that has time_key is removed in the google sync,
+     * and that data's host_name count value is decreased
      * Author: Duhee Ye
      */
     btn.onclick = function() {
@@ -100,14 +102,14 @@ function initTbl(obj) {
       arr[urlKey] = obj[urlKey];
       
       chrome.storage.sync.set(arr, function(){
-        alert("set");
-        });
+        
+      });
       chrome.storage.sync.remove(delKey, function(){
         if(obj[urlKey][obj[urlKey].length -1].value <= 0)
           chrome.storage.sync.remove(urlKey, function(){
-            alert("url removed!");
+            
           });
-        alert("time removed");
+        
       });
 
       table.deleteRow(index);

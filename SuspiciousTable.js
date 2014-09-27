@@ -80,7 +80,8 @@ function initTbl(obj) {
     var cell_lateset = row.insertCell(3);
   
 /*
- * Description:
+ * Suspicious or warning site are displayed based on values set by the user.
+ * default suspicious value is 10 and warning value is 20.
  * Author: Duhee Ye
  */
     var url = keyList[i].split('#');

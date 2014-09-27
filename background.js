@@ -20,10 +20,14 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
       */
      
      
-/*
- * Description: 
- * Author: Duhee Ye
- */
+      /*
+       * Once user has logined or signed-up the page,
+       * user's privacy data will be stored in google sync.
+       * If the data's host name is new that is not stored,
+       * then data that has url key value is creates.
+       * Otherwise data that already exists, increase the data's count value.
+       * Author: Duhee Ye
+       */
       var arr ={};
       chrome.storage.sync.get(null, function(obj) {
           //for(var i = 0; i < obj[key].length; i++) {
