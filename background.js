@@ -31,16 +31,18 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
       var arr ={};
       chrome.storage.sync.get(null, function(obj) {
           //for(var i = 0; i < obj[key].length; i++) {
-           // console.log(obj[key][i].name,":",obj[key][i].value);
+          // console.log(obj[key][i].name,":",obj[key][i].value);
           var allkeys = Object.keys(obj);
           
           if(allkeys.lastIndexOf(url) >= 0){
             key = url;
             data = request.data.slice(0);
+			var item = obj[key];
+			var itemLen = item.length;
             //data = {lastPass: request.time, count: obj[key].count+1};
             data.push({name: 'lastPass', value: request.time},
-                      {name: 'count', value: obj[key][obj[key].length-1].value+1});
-            console.log(obj[key][2].value);
+                      {name: 'count', value: item[itemLen-1].value+1});
+            console.log(item[itemLen-1].value);
             arr[key] = data;
             chrome.storage.sync.set(arr, function() {
               console.log("exist!");
