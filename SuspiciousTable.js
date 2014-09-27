@@ -73,12 +73,7 @@ function initTbl(obj) {
   var table = document.getElementById("suspicious_list");
   
   for(var i = 0; i < keyList.length; i++) {
-    var row = table.insertRow(1);
-    var cell_site = row.insertCell(0);
-    var cell_access_num = row.insertCell(1);
-    var cell_status = row.insertCell(2);
-    var cell_lateset = row.insertCell(3);
-  
+ 
 /*
  * Suspicious or warning site are displayed based on values set by the user.
  * default suspicious value is 10 and warning value is 20.
@@ -109,15 +104,21 @@ function initTbl(obj) {
     }
     
     if(count > suspicious){
-      cell_site.innerHTML = url[1];
-      cell_access_num.innerHTML = count;
-      
-      if(count > warning)
-        cell_status.innerHTML = "Warnig";
-      else if(count > suspicious)
-        cell_status.innerHTML = "Suspicious";
-      
-    }
+		var row = table.insertRow(1);
+		var cell_site = row.insertCell(0);
+		var cell_access_num = row.insertCell(1);
+		var cell_status = row.insertCell(2);
+		var cell_lateset = row.insertCell(3);
+
+		cell_site.innerHTML = url[1];
+		cell_access_num.innerHTML = count;
+
+		if(count > warning)
+			cell_status.innerHTML = "Warnig";
+		else if(count > suspicious)
+			cell_status.innerHTML = "Suspicious";
+
+	}
   }
 }
 
