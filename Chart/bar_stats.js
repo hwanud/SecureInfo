@@ -8,9 +8,13 @@ Array.prototype.last = function() {
 }
 
 /*
- * This function will get all the data from sync server.
- * Provided with the callback function as a parameter,
- * it will process the chart afterall.
+ * Function name: getValue
+ * Description: 
+ * 	This function will get all the data from sync server.
+ * 	Provided with the callback function as a parameter,
+ * 	it will process the chart afterall.
+ * Return: none
+ * Author: ihkim
  */
 function getValue(callback) { 
 	chrome.storage.sync.get(null, callback);
@@ -19,10 +23,15 @@ function getValue(callback) {
 
 /*
  * NOT USED - 2014.09.24.
- * This function counts the number of monthly access activity.
- * This is a starting function for counting.
- * Not completed yet and still requires development.
- * DO NOT USED this for now. 
+ *
+ * Function name: countUsedInforMonth
+ * Description:
+ * 	This function counts the number of monthly access activity.
+ * 	This is a starting function for counting.
+ * 	Not completed yet and still requires development.
+ * 	DO NOT USED this for now. 
+ * Return: monthly access count value
+ * Author: ihkim
  */
 function countUsedInfoMonth(allObj, targetYear) {
 	var count = 0;
@@ -46,11 +55,16 @@ function countUsedInfoMonth(allObj, targetYear) {
 }
 
 /*
- * NOT USED - 2014.09.24.
- * allObj contains all data objects from google sync server.
- * type should specify either "time" or "url".
- * This function will return data object set that is filtered
- * by 'type'.
+ * NOT USED here - 2014.09.24.
+ *
+ * Function name: getFilteredData
+ * Description: 
+ * 	allObj contains all data objects from google sync server.
+ * 	type should specify either "time" or "url".
+ * 	This function will return data object set that is filtered
+ * 	by 'type'.
+ * Return: data filtered by specified type
+ * Author: ihkim
  */
 function getFilteredData(allObj, type) {
 	var filtered = new Array();
@@ -74,10 +88,15 @@ function getFilteredData(allObj, type) {
 
 /*
  * NOT USED - 2014.09.24.
- * This functin counts the number of monthly access to 
- * a certain website.
- * This is not completed yet. It is still developing 
- * and NOT USED for now.
+ *
+ * Function name: getMonthlyCounts
+ * Description: 
+ * 	This functin counts the number of monthly access to 
+ * 	a certain website.
+ * 	This is NOT COMPLETED function. It is still developing 
+ * 	and NOT USED for now.
+ * Return: none
+ * Author: ihkim
  */
 function getMonthlyCounts(objs, timeData) {
 	var visit = new Array();
@@ -105,11 +124,15 @@ function getMonthlyCounts(objs, timeData) {
 }
 
 /*
- * Callback for chrome.storage.sync.get() function. 
- * This will be passed to the sync.get() function.
- * This callback will get all the data from sync server,
- * and then put it to the chart.
- * Chart will be displayed after the page is loaded.
+ * Function name: processChart
+ * Description: 
+ * 	Callback for chrome.storage.sync.get() function. 
+ * 	This will be passed to the sync.get() function.
+ * 	This callback will get all the data from sync server,
+ * 	and then put it to the chart.
+ * 	Chart will be displayed after the page is loaded.
+ * Return: none
+ * Author: ihkim
  */
 function processChart(obj) {
 	//var allkeys = Object.keys(obj);
@@ -161,8 +184,12 @@ function processChart(obj) {
 }
 
 /*
- * This function process chart and prepare to show 
- * afterward with window.onload.
+ * Function name: showBarChart
+ * Description: 
+ * 	This function process chart and prepare to show 
+ * 	afterward with window.onload.
+ * Return: none
+ * Author: ihkim
  */
 function showBarChart(barData) {
 	var ctx = document.getElementById("canvas").getContext("2d");

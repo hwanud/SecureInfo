@@ -1,3 +1,7 @@
+/*
+ * Description: 
+ * Author: Duhee Ye
+ */
 var btn = document.getElementById('clear');
 
 btn.onclick = function() {
