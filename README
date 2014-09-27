@@ -1,27 +1,71 @@
 SecureInfo
 ==========
 
-### This document is on the writing status. It will be added 
-afterwards. ###
-
+### DESCRIPTION
 This project tends to provide a google extension that can help 
 people to recognize their use of Personally Identifiable 
 Information (PII) from the web browser, google chrome. 
 
 This extension will capture the PII that is submitted to any 
-web server during signing up or login process and store them 
-into the local storage. When the users want to audit their 
+web server during sign up or login process and store them 
+into the google sync storage. When the users want to check their 
 history of using websites, they can see them by simply clicking 
 the small icon on the right side of address area of the google 
 chrome and then selecting any button we provide.
 
-This extension currently provides two functions: newly signed-up 
-sites and web browsing hisotry.
-First, newly signed-up shows the websites that the users register 
-or visit for the first time. With this, anyone can manage their 
-records of signuped websites easily.
-Second, web browsing history is a kind of raw data of our program. 
+This extension currently provides three functions: signed-ups, web 
+access hisotry, and suspcious activities.
+First, signed-ups show the websites that the users register or visit 
+for the first time. With this, anyone can manage their records of 
+registered websites easily.
+Second, web access history is a kind of raw data of our program. 
 It basically shows every activities that users send their PII to 
 the web server our from their local computer. 
+Third, suspcious activities is the personal information usage history
+that is suspected as malicious behavior. This is an experimental and 
+optional function currently. Users can set the threshold for both of 
+suspicous and warning activities on the settings pages. This fucntion 
+currently works based on the values. It will be improved by a reason-
+able method afterwards.
 
+* Please note that this application is NOT STABLE version. Installing 
+and using this application might slow your web browser currently.
+
+
+### INSTALLATION
+Currently, this software is not registed on the google play or any 
+website. Users who are interested in this software need to install 
+it under the developer mode. 
+
+1. Download our software from github repository into the local drive, 
+   "https://github.com/hwanud/SecureInfo"
+2. Open google chrome web browser.
+3. Type on the address bar, "chrome://extensions".
+4. Enable developer mode by clicking the checkbox on the right upper
+   side of the page.
+5. Click the "Load unpacked extension..." and locate our extension 
+   from a local hard drive.
+
+If you can see the "Logging Your perfonal Info Usage" on the list of 
+chrome extensions, it is done.
+
+
+### Usage
+Just browse any website as you desire. This application will record 
+the use of your personal information such as id, password, address, 
+and phone number with timestamp. 
+This application DOES NOT record the actual content of your sensitive 
+information except ID anywhere. It only record your use of information
+with timestamp so that you can check when they were used on which web
+service.
+
+
+### CONTACT
+Please visit our github repository and check the current status of 
+development if interested.
+If you have any questions or comments to improve our software, please 
+contact us via any of the following emails. 
+- InHwan Kim, hwanud@gmail.com 
+- Bosung Kim, bokor.kim@gmail.com 
+- Duhee Ye, pitercat07@gmail.com
 
