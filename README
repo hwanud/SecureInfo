@@ -1,5 +1,5 @@
-SecureInfo
-==========
+User Manual - Logging Your Personal Info Usage
+==================================================
 
 ### DESCRIPTION
 
@@ -15,17 +15,17 @@ the small icon on the right side of address area of the google
 chrome and then selecting any button we provide.
 
 This extension currently provides three functions: signed-ups, web 
-access hisotry, and suspcious activities.
+access history, and suspicious activities.
 First, signed-ups show the websites that the users register or visit 
 for the first time. With this, anyone can manage their records of 
 registered websites easily.
 Second, web access history is a kind of raw data of our program. 
 It basically shows every activities that users send their PII to 
-the web server our from their local computer. 
-Third, suspcious activities is the personal information usage history
+the web server from their local computer. 
+Third, suspicious activities is the personal information usage history
 that is suspected as malicious behavior. This is an experimental and 
 optional function currently. Users can set the threshold for both of 
-suspicous and warning activities on the settings pages. This fucntion 
+suspicious and warning activities on the settings pages. This function 
 currently works based on the values. It will be improved by a reason-
 able method afterwards.
 
@@ -35,7 +35,7 @@ and using this application might slow your web browser currently.
 
 ### INSTALLATION
 
-Currently, this software is not registed on the google play or any 
+Currently, this software is not registered on the google play or any 
 website. Users who are interested in this software need to install 
 it under the developer mode. 
 
@@ -48,7 +48,7 @@ it under the developer mode.
 5. Click the "Load unpacked extension..." and locate our extension 
    from a local hard drive.
 
-If you can see the "Logging Your perfonal Info Usage" on the list of 
+If you can see the "Logging Your professional Info Usage" on the list of 
 chrome extensions, it is done.
 
 
