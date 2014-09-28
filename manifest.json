@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "name":    "Logging Your perfonal Info Usage",
+  "name":    "TrackMyPIU",
   "version": "1.0",
   "description": "Get the input field value from the web",
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
