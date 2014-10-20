@@ -46,7 +46,6 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
             arr[key] = data;
             chrome.storage.sync.set(arr, function() {
               console.log("exist!");
-              
             })
             console.log(obj[key]);
           }else
