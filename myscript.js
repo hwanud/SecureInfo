@@ -2,7 +2,9 @@ var mForm = $('input[type=password]').closest("form");
 
 if (mForm.length) {
   for (var i = 0; i < mForm.length; i++) {
-    // handle forms without id
+    if (typeof $(mForm[i]).attr('id') == 'undefined')
+      mForm[i].id = 'catchedByTMPIU' + i;
+
     $("#"+$(mForm[i]).attr('id')).submit(function(e) {
       alert("catch!");
       // get the current URL
