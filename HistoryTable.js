@@ -6,7 +6,7 @@
  * it will process the table afterall.
  * Author: InHwan Kim
  */
-function getValue(callback) { 
+function getValue(callback) {
 	chrome.storage.sync.get(null, callback);
 }
 
@@ -27,7 +27,7 @@ function getFilteredData(allObj, type) {
 		// parsedStr[0] -> time#month
 		// parsedStr[1] -> day
 		// parsedStr[2] -> year + ' ' + data
-		
+
 		var posItem = allObj[itemKey].length-2;
 		//alert(allObj[itemKey][posItem].hostName);
 		var tokenedData = itemKey.split('#');
@@ -43,8 +43,8 @@ function getFilteredData(allObj, type) {
 /*
  * NOT USED - 2014.09.24.
  * Function name: initTbl
- * Description: 
- * Callback for chrome.storage.sync.get() function. 
+ * Description:
+ * Callback for chrome.storage.sync.get() function.
  * This will be passed to the sync.get() function.
  * This callback will get all the data from sync server,
  * and then put it to the table.
@@ -52,41 +52,44 @@ function getFilteredData(allObj, type) {
  * Author: BoSung Kim
  */
 function initTbl(obj) {
-  // Get the name of the key from the sync server    
+  // Get the name of the key from the sync server
   var keyList = getFilteredData(obj, "time");
-  
+
   // Ge the table from the html by id
   var table = document.getElementById("access_history_list");
 
-  // Dinamically add the row into the table  
+  // Dinamically add the row into the table
   for(var i = 0; i < keyList.length; i++) {
     // Make cells for the row
     var row = table.insertRow(1);
     var cell_time = row.insertCell(0);
     var cell_site = row.insertCell(1);
     var cell_information = row.insertCell(2);
-    var cell_btn = row.insertCell(3);
-  
+    var cell_type = row.insertCell(3);
+    var cell_btn = row.insertCell(4);
+
     var time = keyList[i].split('#');
     var objLen = obj[keyList[i]].length;
-    
+
     /* Set the value of each cell
        and set the button for the last cell */
     cell_time.innerHTML = time[1];
     cell_site.innerHTML = obj[keyList[i]][objLen-2].value;
-    
-    for(var j = 0; j < objLen - 2; j++) { 
+
+    for(var j = 0; j < objLen - 2; j++) {
       if(j == objLen - 3)
         cell_information.innerHTML += obj[keyList[i]][j].value;
       else
         cell_information.innerHTML += obj[keyList[i]][j].value + ", ";
     }
-    
+
+    cell_type.innerHTML = obj[keyList[i]][objLen-1].value;
+
     var btn = document.createElement('input');
     btn.type = 'button';
     btn.id = 'btn';
     btn.value = 'Delete';
-    /* 
+    /*
      * If log_data is deleted at history page.
      * The data that has time_key is removed in the google sync,
      * and that data's host_name count value is decreased
@@ -96,26 +99,26 @@ function initTbl(obj) {
       var index = this.parentNode.parentNode.rowIndex;
       var table = document.getElementById("access_history_list");
       var delKey = "time#" + table.rows[index].cells[0].innerHTML;
-      var urlKey = "url#"+obj[delKey][obj[delKey].length-2].value;  
+      var urlKey = "url#"+obj[delKey][obj[delKey].length-2].value;
       obj[urlKey][obj[urlKey].length -1].value--;
       var arr = {};
       arr[urlKey] = obj[urlKey];
-      
+
       chrome.storage.sync.set(arr, function(){
-        
+
       });
       chrome.storage.sync.remove(delKey, function(){
         if(obj[urlKey][obj[urlKey].length -1].value <= 0)
           chrome.storage.sync.remove(urlKey, function(){
-            
+
           });
-        
+
       });
 
       table.deleteRow(index);
       location.reload();
     };
-    
+
     cell_btn.style.textAlign = "center";
     cell_btn.appendChild(btn);
   }
