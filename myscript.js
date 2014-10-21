@@ -6,7 +6,8 @@ if (mForm.length) {
       mForm[i].id = 'catchedByTMPIU' + i;
 
     $("#"+$(mForm[i]).attr('id')).submit(function(e) {
-      alert("catch!");
+      // debug
+      //alert("catch!");
       // get the current URL
       var mURL = window.location.hostname;
 
