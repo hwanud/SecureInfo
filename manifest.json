@@ -1,24 +1,25 @@
 {
   "manifest_version": 2,
-  "name":    "Logging Your perfonal Info Usage",
+  "name":    "TrackMyPIU",
   "version": "1.0",
   "description": "Get the input field value from the web",
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
-  
+
   "background": {
     "scripts": ["background.js"]
   },
-  
+
   "content_scripts": [
     {
       "matches": [
         "<all_urls>"
       ],
       "js": ["jquery-1.11.1.min.js", "myscript.js"],
-      "run_at": "document_end"
+      "run_at": "document_idle",
+      "all_frames": true
     }
   ],
-  
+
   "permissions": [
     "<all_urls>",
     "tabs",
@@ -28,7 +29,7 @@
   "browser_action": {
 	  "default_title": "SecureInfo",
 	  "default_icon": "s_icon.png",
-	  "default_popup": "popup.html" 
+	  "default_popup": "popup.html"
   }
 }
 
