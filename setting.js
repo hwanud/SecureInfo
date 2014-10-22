@@ -12,15 +12,9 @@ function getFilteredData(allObj, type) {
 	var filtered = new Array();
 
 	for (var itemKey in allObj) {
-		// parsedStr[0] -> time#month
-		// parsedStr[1] -> day
-		// parsedStr[2] -> year + ' ' + data
-
 		var posItem = allObj[itemKey].length-2;
-		//alert(allObj[itemKey][posItem].hostName);
 		var tokenedData = itemKey.split('#');
 		if (tokenedData[0] == type) {
-			//filtered.push(allObj[itemKey]);
 			filtered.push(itemKey);
 		}
 	}
