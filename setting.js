@@ -30,19 +30,32 @@ function getFilteredData(allObj, type) {
  * Each textbox displays setting value initially.
  * Author: Duhee Ye
  */
+
+var suspicious;
+var warning;
+
 function init(obj){
   var setting = getFilteredData(obj, "setting");
-  var suspicious = obj[setting[0]][0].value;
-  var warning = obj[setting[0]][1].value;
-  document.getElementById("suspicious").value = suspicious;
-  document.getElementById("warning").value = warning;
+  if(setting.length == 0){
+    suspicious = 10;
+    warning = 20;
+    document.getElementById("suspicious").value = suspicious;
+    document.getElementById("warning").value = warning;
+  }else
+  {
+    suspicious = obj[setting[0]][0].value;
+    warning = obj[setting[0]][1].value;
+    document.getElementById("suspicious").value = suspicious;
+    document.getElementById("warning").value = warning;
+  }
 }
 
 var btn = document.getElementById('clear');
 
 btn.onclick = function() {
   chrome.storage.sync.clear();
-    alert("All data is deleted.");
+  alert("All data is deleted.");
+  location.reload();
 
 };
 
