@@ -6,9 +6,9 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
       console.log(request.type);
       //console.log(request.data);
       console.log(request.time);
-
       var key = request.time.toString();
       var data = request.data;
+
 
       /*
        * test for appending JSON Object
@@ -18,8 +18,6 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 
       console.log(data);
       */
-
-
       /*
        * Once user has logined or signed-up the page,
        * user's privacy data will be stored in google sync.
@@ -46,6 +44,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
             arr[key] = data;
             chrome.storage.sync.set(arr, function() {
               console.log("exist!");
+
             });
 
             console.log(obj[key]);

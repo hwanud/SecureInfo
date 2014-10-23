@@ -4,20 +4,55 @@
  * then set the threshold that based on showing the suspicious site.
  * Author: Duhee Ye
  */
+function getValue(callback) {
+	chrome.storage.sync.get(null, callback);
+}
+
+function getFilteredData(allObj, type) {
+	var filtered = new Array();
+
+	for (var itemKey in allObj) {
+		var posItem = allObj[itemKey].length-2;
+		var tokenedData = itemKey.split('#');
+		if (tokenedData[0] == type) {
+			filtered.push(itemKey);
+		}
+	}
+
+	return filtered;
+}
+/*
+ * Function name: init
+ * Description:
+ * Callback for chrome.storage.sync.get() function.
+ * This callback will get all the data from sync server,
+ * and then put it to setting.html's textbox.
+ * Each textbox displays setting value initially.
+ * Author: Duhee Ye
+ */
+function init(obj){
+  var setting = getFilteredData(obj, "setting");
+  var suspicious = obj[setting[0]][0].value;
+  var warning = obj[setting[0]][1].value;
+  document.getElementById("suspicious").value = suspicious;
+  document.getElementById("warning").value = warning;
+}
+
 var btn = document.getElementById('clear');
 
 btn.onclick = function() {
   chrome.storage.sync.clear();
     alert("cleared!");
-    
+
 };
+
 
 var btn2 = document.getElementById('threshold');
 
 btn2.onclick = function() {
   //alert("btn2");
-  var suspicious = document.getElementById('suspicious').value;
-  var warning = document.getElementById('warning').value;
+  suspicious = document.getElementById('suspicious').value;
+  warning = document.getElementById('warning').value;
   var arr = {}
   var key = "setting#threshold";
   var data = [{name: 'suspicious', value: suspicious },{name: 'warning', value: warning }];
@@ -26,3 +61,5 @@ btn2.onclick = function() {
      alert("Set the Threshold!");
   });
 }
+
+getValue(init)
