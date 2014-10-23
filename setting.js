@@ -66,13 +66,19 @@ btn2.onclick = function() {
   //alert("btn2");
   suspicious = document.getElementById('suspicious').value;
   warning = document.getElementById('warning').value;
-  var arr = {}
-  var key = "setting#threshold";
-  var data = [{name: 'suspicious', value: suspicious },{name: 'warning', value: warning }];
-  arr[key] = data;
-  chrome.storage.sync.set(arr, function(){
+  if(suspicious < warning){
+    var arr = {}
+    var key = "setting#threshold";
+    var data = [{name: 'suspicious', value: suspicious },{name: 'warning', value: warning }];
+    arr[key] = data;
+    chrome.storage.sync.set(arr, function(){
      alert("Threshold values are set.");
-  });
+    });
+  }else
+  {
+    alert("'Suspicious' value is lager than 'Warning' value");
+  }
+
 }
 
 getValue(init)
