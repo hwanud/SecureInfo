@@ -42,7 +42,7 @@ var btn = document.getElementById('clear');
 
 btn.onclick = function() {
   chrome.storage.sync.clear();
-    alert("cleared!");
+    alert("All data is deleted.");
 
 };
 
@@ -58,7 +58,7 @@ btn2.onclick = function() {
   var data = [{name: 'suspicious', value: suspicious },{name: 'warning', value: warning }];
   arr[key] = data;
   chrome.storage.sync.set(arr, function(){
-     alert("Set the Threshold!");
+     alert("Threshold values are set.");
   });
 }
 
