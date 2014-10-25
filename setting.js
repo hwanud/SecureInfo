@@ -81,4 +81,14 @@ btn2.onclick = function() {
 
 }
 
+/*
+ * Open chrome extension setting page. Just for convinience.
+ * AUthor: InHwan Kim
+ * Date: 10/25/2014
+ */
+var btn_ext_setting = document.getElementById('ext_setting');
+btn_ext_setting.onclick = function() {
+  chrome.tabs.create({url: "chrome://extensions/"});
+}
+
 getValue(init)
