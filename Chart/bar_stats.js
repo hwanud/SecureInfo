@@ -1,6 +1,6 @@
 /*
  * Overload the Array prototype here.
- * last keyword will return the last element in 
+ * last keyword will return the last element in
  * the array.
  */
 Array.prototype.last = function() {
@@ -9,14 +9,14 @@ Array.prototype.last = function() {
 
 /*
  * Function name: getValue
- * Description: 
+ * Description:
  * 	This function will get all the data from sync server.
  * 	Provided with the callback function as a parameter,
  * 	it will process the chart afterall.
  * Return: none
  * Author: ihkim
  */
-function getValue(callback) { 
+function getValue(callback) {
 	chrome.storage.sync.get(null, callback);
 }
 
@@ -29,7 +29,7 @@ function getValue(callback) {
  * 	This function counts the number of monthly access activity.
  * 	This is a starting function for counting.
  * 	Not completed yet and still requires development.
- * 	DO NOT USED this for now. 
+ * 	DO NOT USED this for now.
  * Return: monthly access count value
  * Author: ihkim
  */
@@ -44,9 +44,9 @@ function countUsedInfoMonth(allObj, targetYear) {
 	filteredData = getFilteredData(allObj, "url");
 	alert(filteredData.length);
 
-	
-	/* Count data using site name now if chart shows 
-	   monthly or daily statistics. 
+
+	/* Count data using site name now if chart shows
+	   monthly or daily statistics.
 	   We need to use "time#" type data to represent it
 	   monthly, daily, etc. */
 	// getMonthlyCounts(allObj, filteredData);
@@ -58,7 +58,7 @@ function countUsedInfoMonth(allObj, targetYear) {
  * NOT USED here - 2014.09.24.
  *
  * Function name: getFilteredData
- * Description: 
+ * Description:
  * 	allObj contains all data objects from google sync server.
  * 	type should specify either "time" or "url".
  * 	This function will return data object set that is filtered
@@ -73,7 +73,7 @@ function getFilteredData(allObj, type) {
 		// parsedStr[0] -> time#month
 		// parsedStr[1] -> day
 		// parsedStr[2] -> year + ' ' + data
-		
+
 		var posItem = allObj[itemKey].length-2;
 		//alert(allObj[itemKey][posItem].hostName);
 		var tokenedData = itemKey.split('#');
@@ -90,10 +90,10 @@ function getFilteredData(allObj, type) {
  * NOT USED - 2014.09.24.
  *
  * Function name: getMonthlyCounts
- * Description: 
- * 	This functin counts the number of monthly access to 
+ * Description:
+ * 	This functin counts the number of monthly access to
  * 	a certain website.
- * 	This is NOT COMPLETED function. It is still developing 
+ * 	This is NOT COMPLETED function. It is still developing
  * 	and NOT USED for now.
  * Return: none
  * Author: ihkim
@@ -102,7 +102,7 @@ function getMonthlyCounts(objs, timeData) {
 	var visit = new Array();
 
 	for (var cnt = 0; cnt < timeData.length; cnt++) {
-		var parsedStr = timeData[cnt].split('/');	
+		var parsedStr = timeData[cnt].split('/');
 		var month = parsedStr[0];
 		var year = parsedStr[2].split(' ')[0];
 
@@ -113,7 +113,7 @@ function getMonthlyCounts(objs, timeData) {
 		var siteName = objs[timeData[cnt]][len-2].value;
 		len = 0;
 	}
-	
+
 	//var len = allObj[filteredData[0]].length;
 	//alert(allObj[filteredData[0]][len-2].value);
 
@@ -125,8 +125,8 @@ function getMonthlyCounts(objs, timeData) {
 
 /*
  * Function name: processChart
- * Description: 
- * 	Callback for chrome.storage.sync.get() function. 
+ * Description:
+ * 	Callback for chrome.storage.sync.get() function.
  * 	This will be passed to the sync.get() function.
  * 	This callback will get all the data from sync server,
  * 	and then put it to the chart.
@@ -152,7 +152,7 @@ function processChart(obj) {
 	barDataSet.datasets = new Array();
 
 	/* Use random function to select bar color. (100~200)
-	   Avoid too bright or dark color because it is not 
+	   Avoid too bright or dark color because it is not
 	   clear on the white or black kind of background. */
 	var randColor = Math.floor(Math.random() * 100) + 100;
 
@@ -164,21 +164,21 @@ function processChart(obj) {
 	tmpData.highlightStroke = "rgba(" + randColor + "," + randColor + "," + randColor + "," + "1)";
 	tmpData.data = new Array();
 
-	/* This loop constructs the object which contains labels 
+	/* This loop constructs the object which contains labels
 	   and count value for web access. */
 	for (var i = 0; i < urlData.length; i++) {
 		var retrievedUrl = urlData[i].split('#')[1];
 		barDataSet.labels.push(retrievedUrl);
-		
+
 		var key = urlData[i];	// this has "url#" keyword with actual url.
 		var len = obj[key].length;
-		var totalVisitCount = obj[key][len-1].value;	// the last index has count value. 
+		var totalVisitCount = obj[key][len-1].value;	// the last index has count value.
 
 		// push data continuously because we construct bar graph for each website.
-		tmpData.data.push(totalVisitCount);	
+		tmpData.data.push(totalVisitCount);
 	}
 
-	// Final stage to construct bar graph data. 
+	// Final stage to construct bar graph data.
 	barDataSet.datasets.push(tmpData);
 
 	// Show bar graph on page loading.
@@ -187,8 +187,8 @@ function processChart(obj) {
 
 /*
  * Function name: showBarChart
- * Description: 
- * 	This function process chart and prepare to show 
+ * Description:
+ * 	This function process chart and prepare to show
  * 	afterward with window.onload.
  * Return: none
  * Author: ihkim
@@ -196,7 +196,7 @@ function processChart(obj) {
 function showBarChart(barData) {
 	var chartArea = document.getElementById("chart_area");
 
-	/* If chart area does not have anything to display, it will 
+	/* If chart area does not have anything to display, it will
 	   show a text "There is no data to display." instead of
 	   leaving the place empty. */
 	if (barData.labels.length == 0) {	// in case of not having any data
@@ -221,4 +221,3 @@ function showBarChart(barData) {
 
 /* Initiate chart processing */
 getValue(processChart);
-
