@@ -1,4 +1,11 @@
 /*
+ * Copyright 2014 InHwan Kim, BoSung Kim, DuHee Ye
+ * Released under the MIT license
+ * https://github.com/hwanud/SecureInfo/LICENSE.md
+ */
+
+
+/*
  * Function name: getValue
  * Description:
  * This function will get all the data from sync server.

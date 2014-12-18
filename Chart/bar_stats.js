@@ -1,4 +1,11 @@
 /*
+ * Copyright 2014 InHwan Kim, BoSung Kim, DuHee Ye
+ * Released under the MIT license
+ * https://github.com/hwanud/SecureInfo/LICENSE.md
+ */ 
+
+
+/*
  * Overload the Array prototype here.
  * last keyword will return the last element in
  * the array.

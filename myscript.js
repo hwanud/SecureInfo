@@ -1,3 +1,10 @@
+/*
+ * Copyright 2014 InHwan Kim, BoSung Kim, DuHee Ye
+ * Released under the MIT license
+ * https://github.com/hwanud/SecureInfo/LICENSE.md
+ */
+
+
 /**
  * in case we don't have any forms, we might have a chance to have
  * input data without form tag.

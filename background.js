@@ -1,3 +1,9 @@
+/*
+ * Copyright 2014 InHwan Kim, BoSung Kim, DuHee Ye
+ * Released under the MIT license
+ * https://github.com/hwanud/SecureInfo/LICENSE.md
+ */
+
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     if(request.action == "GetInput") {
       console.log("Received!");

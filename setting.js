@@ -1,4 +1,11 @@
 /*
+ * Copyright 2014 InHwan Kim, BoSung Kim, DuHee Ye
+ * Released under the MIT license
+ * https://github.com/hwanud/SecureInfo/LICENSE.md
+ */
+
+
+/*
  * If click the 'clear', all of data are removed.
  * User set the threshold value and click the 'done',
  * then set the threshold that based on showing the suspicious site.
